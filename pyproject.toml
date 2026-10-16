@@ -1,0 +1,25 @@
+[project]
+name = "ksj-l01-land-price"
+version = "0.1.0"
+description = "Reproducible collection of the L01 land price (地価公示) data of Japan, 2019 to 2026"
+requires-python = ">=3.12"
+dependencies = [
+    "huggingface-hub>=2.2.0",
+    "openpyxl>=3.1.5",
+    "pyarrow>=26.0.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=9.1.1", "ruff>=0.16.9"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["scripts"]

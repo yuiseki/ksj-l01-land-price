@@ -1,0 +1,7 @@
+source: 国土数値情報 地価公示データ (L01), 国土交通省, 2019 to 2026
+url: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-L01-2026.html
+retrieved: 2026-10-16
+run: 2026-10-16
+terms: https://nlftp.mlit.go.jp/ksj/other/agreement.html
+files: 384
+rows: 207087
