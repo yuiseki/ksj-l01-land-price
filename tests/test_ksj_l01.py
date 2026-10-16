@@ -157,6 +157,11 @@ def test_to_int_and_to_float_leave_unreadable_values_empty():
     assert k.to_int("459000") == 459000
     assert k.to_int("") is None and k.to_int("_") is None and k.to_int("3.1") is None
     assert k.to_float("3.1") == 3.1 and k.to_float("_") is None and k.to_float("") is None
+    assert k.to_float("6.00000e-001") == 0.6
+    assert k.to_float("-1.47000e+001") == -14.7
+    assert k.to_float("5.30000e+000") == 5.3
+    with pytest.raises(ValueError):
+        k.to_float("abc")
 
 
 def test_xlsx_labels_reads_single_columns_and_skips_ranges(tmp_path):

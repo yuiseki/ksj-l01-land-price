@@ -53,6 +53,13 @@ def main() -> int:
                 if rg["price_yen"][i] != k.to_int(d[mapping["price"][0]]):
                     problems.append(f"{year} {p:02d} row {i}: price_yen differs")
                     break
+                want_chg = k.to_float(d[mapping["change_pct"][0]]) if "change_pct" in mapping else None
+                if rg["change_pct"][i] != want_chg:
+                    problems.append(f"{year} {p:02d} row {i}: change_pct differs")
+                    break
+                if rg["area_m2"][i] != k.to_float(d[mapping["area_m2"][0]]):
+                    problems.append(f"{year} {p:02d} row {i}: area_m2 differs")
+                    break
                 if rg["municipality_code"][i] != d[mapping["municipality_code"][0]]:
                     problems.append(f"{year} {p:02d} row {i}: municipality_code differs")
                     break

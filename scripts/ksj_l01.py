@@ -158,7 +158,16 @@ def to_int(v: str) -> int | None:
 
 
 def to_float(v: str) -> float | None:
-    return float(v) if re.fullmatch(r"-?\d+(\.\d+)?", v) else None
+    """A number, plain or in exponent form (the 2023 change rate is ``6.00000e-001``).
+
+    Only the empty marks give None; any other text raises, so a form this does not know
+    cannot turn a whole column empty without anyone noticing.
+    """
+    if v in ("", "_"):
+        return None
+    if not re.fullmatch(r"-?\d+(\.\d*)?([eE][+-]?\d+)?", v):
+        raise ValueError(f"not a number: {v!r}")
+    return float(v)
 
 
 def xlsx_labels(path, sheet: str) -> dict[int, str]:
